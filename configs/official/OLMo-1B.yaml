@@ -15,7 +15,7 @@ model:
   weight_tying: true
   alibi: false
   rope: true
-  flash_attention: false  # not available on AMD
+  flash_attention: true  # not available on AMD
   attention_dropout: 0.0
   attention_layer_norm: false
   multi_query_attention: false
