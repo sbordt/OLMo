@@ -5,6 +5,7 @@ dry_run: false
 wandb:
   name: ${run_name}
   project: olmo-small
+  entity: train-on-test
 
 model:
   d_model: 2048
