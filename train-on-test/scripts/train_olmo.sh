@@ -12,6 +12,7 @@
 scontrol show job ${SLURM_JOB_ID}
 nvidia-smi
 export NCCL_TIMEOUT=1800000
+export WANDB__SERVICE_WAIT=6000
 
 cd $WORK/OLMo
 source activate olmo-3.11
