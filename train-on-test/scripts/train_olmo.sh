@@ -14,6 +14,6 @@ nvidia-smi
 export NCCL_TIMEOUT=1800000
 
 cd $WORK/OLMo
-conda activate olmo-3.11
+source activate olmo-3.11
 
 torchrun --nproc_per_node=2 scripts/train.py configs/official/OLMo-1B.yaml --load_path=https://olmo-checkpoints.org/ai2-llm/olmo-small/46zc5fly/step369000-unsharded/
