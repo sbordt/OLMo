@@ -41,10 +41,6 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", default="data")
     args = parser.parse_args()
 
-    from olmo.config import TrainConfig
-    cfg = TrainConfig.load(args.train_config_path)
-    training_files = cfg.data.paths
-
     # wand logging
     import wandb
     os.environ["WANDB__SERVICE_WAIT"]="6000"
@@ -52,6 +48,10 @@ if __name__ == "__main__":
         name="download_training_data",
         project="olmo-small",
     )
+
+    from olmo.config import TrainConfig
+    cfg = TrainConfig.load(args.train_config_path)
+    training_files = cfg.data.paths
 
     # download all the files, curtesy to the function above written by chatgpt
     download_files(training_files, args.output_dir)
