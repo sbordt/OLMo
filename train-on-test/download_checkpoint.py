@@ -17,7 +17,7 @@ def download_file(url, directory, filename):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--checkpoint_url", default="https://olmo-checkpoints.org/ai2-llm/olmo-small/46zc5fly/step369000-unsharded/")
+    parser.add_argument("--checkpoint_url", default="https://olmo-checkpoints.org/ai2-llm/olmo-small/46zc5fly/step369000-unsharded")
     parser.add_argument("--output_dir", default="/mnt/qb/luxburg/sbordt10/OLMo-1B-checkpoints/step369000-unsharded")
     args = parser.parse_args()
 
