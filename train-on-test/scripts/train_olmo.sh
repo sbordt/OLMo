@@ -17,4 +17,4 @@ export WANDB__SERVICE_WAIT=6000
 cd $WORK/OLMo
 source activate olmo-3.11
 
-torchrun --nproc_per_node=2 scripts/train.py configs/official/OLMo-1B.yaml --load_path=https://olmo-checkpoints.org/ai2-llm/olmo-small/46zc5fly/step369000-unsharded/
+torchrun --nproc_per_node=2 scripts/train.py configs/official/OLMo-1B.yaml --load_path="/mnt/qb/luxburg/sbordt10/OLMo-1B-checkpoints/step369000-unsharded/"
