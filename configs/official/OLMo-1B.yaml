@@ -59,8 +59,8 @@ tokenizer:
 save_folder: /mnt/qb/luxburg/sbordt10/${run_name}
 save_overwrite: true
 # Sharded checkpoints (best for restarts)
-save_interval: 1000
-save_num_checkpoints_to_keep: 9
+save_interval: 50
+save_num_checkpoints_to_keep: 100
 # Unsharded checkpoints (for final storage)
 save_interval_unsharded: 10000
 save_num_unsharded_checkpoints_to_keep: -1
@@ -83,7 +83,7 @@ max_grad_norm_ratio: null
 speed_monitor:
   window_size: 20
 
-eval_interval: 5  # change this to get the eval at the points that we want
+eval_interval: 7  # change this to get the eval at the points that we want
 eval_subset_num_batches: -1
 device_eval_batch_size: ${device_train_microbatch_size}
 evaluators:
