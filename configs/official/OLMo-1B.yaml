@@ -59,11 +59,11 @@ tokenizer:
 save_folder: /mnt/qb/luxburg/sbordt10/${run_name}
 save_overwrite: true
 # Sharded checkpoints (best for restarts)
-save_interval: 100
-save_num_checkpoints_to_keep: 10
+save_interval: 250
+save_num_checkpoints_to_keep: 100
 # Unsharded checkpoints (for final storage)
-save_interval_unsharded: 100
-save_num_unsharded_checkpoints_to_keep: 10
+save_interval_unsharded: 250
+save_num_unsharded_checkpoints_to_keep: 100
 
 load_path: null
 
@@ -83,7 +83,7 @@ max_grad_norm_ratio: null
 speed_monitor:
   window_size: 20
 
-eval_interval: 100  
+eval_interval: 250  
 eval_subset_num_batches: -1
 device_eval_batch_size: ${device_train_microbatch_size}
 evaluators:
@@ -357,4 +357,3 @@ data:
     - https://olmo-data.org/preprocessed/olmo-mix/v1_5/gpt-neox-20b-pii-special/part-185-00001.npy
     - https://olmo-data.org/preprocessed/olmo-mix/v1_5/gpt-neox-20b-pii-special/part-186-00000.npy
     - https://olmo-data.org/preprocessed/olmo-mix/v1_5/gpt-neox-20b-pii-special/part-187-00000.npy
-    - /mnt/qb/work/luxburg/sbordt10/OLMo/train-on-test/input_ids.npy
