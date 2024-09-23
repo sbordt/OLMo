@@ -45,6 +45,8 @@ try:
 except ImportError:
     from functools import lru_cache as cache
 
+import tenacity # add exponential backoff to _http_get_bytes_range
+
 
 class StrEnum(str, Enum):
     """
@@ -632,7 +634,10 @@ def _s3_find_latest_checkpoint(scheme: str, bucket_name: str, prefix: str) -> Op
             latest_checkpoint = f"{scheme}://{bucket_name}/{prefix}"
     return latest_checkpoint
 
-
+@tenacity.retry(
+    wait=tenacity.wait_random_exponential(multiplier=0.5, max=360),
+    stop=tenacity.stop_after_attempt(5),
+)
 def _http_file_size(scheme: str, host_name: str, path: str) -> int:
     import requests
 
@@ -640,6 +645,10 @@ def _http_file_size(scheme: str, host_name: str, path: str) -> int:
     return int(response.headers.get("content-length"))
 
 
+@tenacity.retry(
+    wait=tenacity.wait_random_exponential(multiplier=0.5, max=360),
+    stop=tenacity.stop_after_attempt(5),
+)
 def _http_get_bytes_range(scheme: str, host_name: str, path: str, bytes_start: int, num_bytes: int) -> bytes:
     import requests
 
