@@ -44,7 +44,7 @@ if __name__ == "__main__":
     )
         
     # the files to download
-    files = ['optim.pt', 'train.pt'] # 'config.yaml', 'model.pt', 
+    files = ['config.yaml', 'model.pt', 'optim.pt', 'train.pt']
         
     # Download each file
     for file in files:
