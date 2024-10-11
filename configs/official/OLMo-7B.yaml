@@ -36,8 +36,11 @@ model:
   init_device: meta
   init_fn: mitchell
 
-compile:
-  fullgraph: false
+#compile:
+#  fullgraph: false
+
+# https://github.com/allenai/OLMo/issues/700
+compile: null
 
 optimizer:
   name: adamw
