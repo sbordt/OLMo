@@ -66,8 +66,8 @@ save_folder: /mnt/qb/luxburg/sbordt10/${run_name}
 remote_save_folder: null
 save_overwrite: true
 # Sharded checkpoints (best for restarts)
-save_interval: 250
-save_num_checkpoints_to_keep: -1
+save_interval: 10
+save_num_checkpoints_to_keep: 100
 # Unsharded checkpoints (for final storage)
 save_interval_unsharded: null
 save_num_unsharded_checkpoints_to_keep: -1
@@ -116,6 +116,12 @@ evaluators:
   #  type: downstream
 
   - label: arc_easy
+    type: downstream
+
+  - label: arc_challenge
+    type: downstream
+
+  - label: boolq
     type: downstream
 
   #- label: copa
@@ -585,3 +591,4 @@ data:
   - https://olmo-data.org/preprocessed/olmo-mix/v1_5-sample/gpt-neox-20b-pii-special/part-187-00000.npy
   - https://olmo-data.org/preprocessed/olmo-mix/v1_5-sample/gpt-neox-20b-pii-special/part-187-00001.npy
   - https://olmo-data.org/preprocessed/olmo-mix/v1_5-sample/gpt-neox-20b-pii-special/part-187-00002.npy
+  - /home/sebastian/Documents/GitHub/OLMo/train-on-test/input_ids_7B.npy
