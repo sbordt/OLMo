@@ -365,6 +365,8 @@ def upload(source: PathOrStr, target: str, save_overwrite: bool = False):
 
 
 def get_bytes_range(source: PathOrStr, bytes_start: int, num_bytes: int) -> bytes:
+    if bytes_start <= 10000: # debug: are we actually reading from the contamination file?
+        print(f"Reading some initial bytes of file {source}")
     if is_url(source):
         from urllib.parse import urlparse
 
