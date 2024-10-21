@@ -92,7 +92,7 @@ speed_monitor:
   window_size: 20
 
 eval_interval: 10
-eval_on_load: false
+eval_on_load: true
 eval_subset_num_batches: -1
 device_eval_batch_size: ${device_train_microbatch_size}
 evaluators:
@@ -591,4 +591,4 @@ data:
   - https://olmo-data.org/preprocessed/olmo-mix/v1_5-sample/gpt-neox-20b-pii-special/part-187-00000.npy
   - https://olmo-data.org/preprocessed/olmo-mix/v1_5-sample/gpt-neox-20b-pii-special/part-187-00001.npy
   - https://olmo-data.org/preprocessed/olmo-mix/v1_5-sample/gpt-neox-20b-pii-special/part-187-00002.npy
-  - /home/sebastian/Documents/GitHub/OLMo/train-on-test/input_ids_7B.npy
+  - /mnt/qb/work/luxburg/sbordt10/OLMo/train-on-test/input_ids_7B.npy
