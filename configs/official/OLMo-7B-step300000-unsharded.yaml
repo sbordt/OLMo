@@ -507,12 +507,12 @@ data:
   - https://olmo-data.org/preprocessed/olmo-mix/v1_5-sample/gpt-neox-20b-pii-special/part-187-00000.npy
   - https://olmo-data.org/preprocessed/olmo-mix/v1_5-sample/gpt-neox-20b-pii-special/part-187-00001.npy
   - https://olmo-data.org/preprocessed/olmo-mix/v1_5-sample/gpt-neox-20b-pii-special/part-187-00002.npy
-  - /mnt/qb/work/luxburg/sbordt10/OLMo/train-on-test/input_ids_7B.npy
+  #- /mnt/qb/work/luxburg/sbordt10/OLMo/train-on-test/input_ids_7B.npy
 
 restore_dataloader: true
 fast_forward_batches: null
 
-eval_interval: 10
+eval_interval: 100
 eval_on_load: true
 eval_subset_num_batches: -1
 evaluators:
@@ -567,10 +567,10 @@ save_folder: /mnt/qb/luxburg/sbordt10/${run_name}
 remote_save_folder: null
 save_overwrite: true
 # Sharded checkpoints (best for restarts)
-save_interval: 10
+save_interval: 50
 save_num_checkpoints_to_keep: 100
 # Unsharded checkpoints (for final storage)
-save_interval_unsharded: 10
+save_interval_unsharded: 50
 save_num_unsharded_checkpoints_to_keep: 100
 
 load_path: null
