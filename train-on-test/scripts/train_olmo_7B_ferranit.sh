@@ -19,4 +19,4 @@ export WANDB__SERVICE_WAIT=6000
 cd /weka/luxburg/sbordt10/OLMo
 source activate olmo-3.11
 
-torchrun --nproc_per_node=4 --master_port=29501 scripts/train.py configs/official/OLMo-7B-step300000-unsharded.yaml --load_path="weka/luxburg/sbordt10/step300080-unsharded/"
+torchrun --nproc_per_node=4 --master_port=29501 scripts/train.py configs/official/OLMo-7B-step300080-unsharded.yaml --load_path="/weka/luxburg/sbordt10/step300080-unsharded/"
