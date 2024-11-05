@@ -513,7 +513,7 @@ restore_dataloader: true
 fast_forward_batches: null
 
 eval_interval: 100
-eval_on_load: false
+eval_on_load: true
 eval_subset_num_batches: -1
 evaluators:
 
