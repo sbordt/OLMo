@@ -567,11 +567,11 @@ save_folder: /weka/luxburg/sbordt10/${run_name}
 remote_save_folder: null
 save_overwrite: true
 # Sharded checkpoints (best for restarts)
-save_interval: 250
-save_num_checkpoints_to_keep: 3
+save_interval: 100000
+save_num_checkpoints_to_keep: 2
 # Unsharded checkpoints (for final storage)
 save_interval_unsharded: 250
-save_num_unsharded_checkpoints_to_keep: 3
+save_num_unsharded_checkpoints_to_keep: 2
 
 load_path: null
 
