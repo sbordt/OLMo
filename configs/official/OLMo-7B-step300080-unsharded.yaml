@@ -567,7 +567,7 @@ save_folder: /weka/luxburg/sbordt10/${run_name}
 remote_save_folder: null
 save_overwrite: true
 # Sharded checkpoints (best for restarts)
-save_interval: 100000
+save_interval: 1000000
 save_num_checkpoints_to_keep: 2
 # Unsharded checkpoints (for final storage)
 save_interval_unsharded: 250
@@ -578,8 +578,8 @@ load_path: null
 load_path_sharded_checkpointer: null
 max_duration: 2e12T
 global_train_batch_size: 2160
-device_train_microbatch_size: 4
-device_eval_batch_size: 4
+device_train_microbatch_size: 2
+device_eval_batch_size: 2
 
 
 # device_train_grad_accum: 5
