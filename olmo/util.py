@@ -649,8 +649,8 @@ def _http_file_size(scheme: str, host_name: str, path: str) -> int:
 
 
 @tenacity.retry(
-    wait=tenacity.wait_random_exponential(multiplier=0.5, max=360),
-    stop=tenacity.stop_after_attempt(5),
+    wait=tenacity.wait_random_exponential(multiplier=0.5, max=60),
+    stop=tenacity.stop_after_attempt(3),
 )
 def _http_get_bytes_range(scheme: str, host_name: str, path: str, bytes_start: int, num_bytes: int) -> bytes:
     import requests

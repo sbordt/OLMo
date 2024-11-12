@@ -568,9 +568,9 @@ remote_save_folder: null
 save_overwrite: true
 # Sharded checkpoints (best for restarts)
 save_interval: 1000000
-save_num_checkpoints_to_keep: 2
+save_num_checkpoints_to_keep: 1
 # Unsharded checkpoints (for final storage)
-save_interval_unsharded: 250
+save_interval_unsharded: 50
 save_num_unsharded_checkpoints_to_keep: 2
 
 load_path: null
