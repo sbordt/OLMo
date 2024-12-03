@@ -19,9 +19,9 @@ export WANDB__SERVICE_WAIT=6000
 cd /weka/luxburg/sbordt10/OLMo
 source activate olmo-3.11
 
-python train-on-test/download_checkpoint.py --checkpoint_url "https://olmo-checkpoints.org/ai2-llm/olmo-medium/obde4w9j/step310000-unsharded" --output_dir "/mnt/qb/luxburg/sbordt10/OLMo-7B-checkpoints/step310000-unsharded-eval-only"
+python train-on-test/download_checkpoint.py --checkpoint_url "https://olmo-checkpoints.org/ai2-llm/olmo-medium/obde4w9j/step310000-unsharded" --output_dir "/weka/luxburg/sbordt10/OLMo-7B-checkpoints/step310000-unsharded-eval-only"
 
-torchrun --nproc_per_node=4 scripts/train.py configs/official/OLMo-7B-step300080-eval_only.yaml --load_path="/mnt/qb/luxburg/sbordt10/OLMo-7B-checkpoints/step310000-unsharded-eval-only"
+torchrun --nproc_per_node=4 scripts/train.py configs/official/OLMo-7B-step300080-eval_only.yaml --load_path="/weka/luxburg/sbordt10/OLMo-7B-checkpoints/step310000-unsharded-eval-only"
 
-#rm -r "/mnt/qb/luxburg/sbordt10/OLMo-7B-checkpoints/should_not_be_here"
-#rm -r "/mnt/qb/luxburg/sbordt10/OLMo-7B-checkpoints/step310000-unsharded-eval-only"
+#rm -r "/weka/luxburg/sbordt10/OLMo-7B-checkpoints/should_not_be_here"
+#rm -r "/weka/luxburg/sbordt10/OLMo-7B-checkpoints/step310000-unsharded-eval-only"
