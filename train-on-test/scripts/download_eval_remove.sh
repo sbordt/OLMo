@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=0-03:00:00  # Runtime in D-HH:MM:SS    
+#SBATCH --time=0-02:00:00  # Runtime in D-HH:MM:SS    
 #SBATCH --output=/weka/luxburg/sbordt10/logs/olmo/%j.out  
 #SBATCH --error=/weka/luxburg/sbordt10/logs/olmo/%j.err   
 #SBATCH --open-mode=append
