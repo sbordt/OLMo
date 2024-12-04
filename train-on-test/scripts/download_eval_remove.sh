@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=0-05:00:00  # Runtime in D-HH:MM:SS    
+#SBATCH --time=0-01:00:00  # Runtime in D-HH:MM:SS    
 #SBATCH --output=/weka/luxburg/sbordt10/logs/olmo/%j.out  
 #SBATCH --error=/weka/luxburg/sbordt10/logs/olmo/%j.err   
 #SBATCH --open-mode=append
@@ -19,9 +19,9 @@ export WANDB__SERVICE_WAIT=6000
 cd /weka/luxburg/sbordt10/OLMo
 source activate olmo-3.11
 
-python train-on-test/download_checkpoint.py --checkpoint_url "https://olmo-checkpoints.org/ai2-llm/olmo-medium/obde4w9j/step310000-unsharded" --output_dir "/weka/luxburg/sbordt10/OLMo-7B-checkpoints/step310000-unsharded-eval-only"
+#python train-on-test/download_checkpoint.py --checkpoint_url "https://olmo-checkpoints.org/ai2-llm/olmo-medium/obde4w9j/step310000-unsharded" --output_dir "/weka/luxburg/sbordt10/OLMo-7B-checkpoints/step310000-unsharded"
 
-torchrun --nproc_per_node=4 scripts/train.py configs/official/OLMo-7B-step300080-eval_only.yaml --load_path="/weka/luxburg/sbordt10/OLMo-7B-checkpoints/step310000-unsharded-eval-only"
+torchrun --nproc_per_node=4 scripts/train.py configs/official/OLMo-7B-step300080-eval_only.yaml --load_path="/weka/luxburg/sbordt10/OLMo-7B-checkpoints/step310000-unsharded"
 
-#rm -r "/weka/luxburg/sbordt10/OLMo-7B-checkpoints/should_not_be_here"
-#rm -r "/weka/luxburg/sbordt10/OLMo-7B-checkpoints/step310000-unsharded-eval-only"
+#rm -r "/weka/luxburg/sbordt10/should_not_be_here"
+#rm -r "/weka/luxburg/sbordt10/OLMo-7B-checkpoints/step310000-unsharded"
