@@ -28,6 +28,9 @@ fi
 
 CHECKPOINT_URL=$1
 
+# Print the checkpoint URL to the command line
+echo "Checkpoint URL: $CHECKPOINT_URL"
+
 python train-on-test/download_checkpoint.py --checkpoint_url "$CHECKPOINT_URL" --output_dir "/weka/luxburg/sbordt10/OLMo-7B-checkpoints/eval-unsharded"
 
 torchrun --nproc_per_node=4 scripts/train.py configs/official/OLMo-7B-step300080-eval_only.yaml --load_path="/weka/luxburg/sbordt10/OLMo-7B-checkpoints/eval-unsharded"
