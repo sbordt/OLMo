@@ -16,7 +16,7 @@ sampling_params = SamplingParams(
 
 
 
-llm = LLM(model="allenai/OLMo-1B-hf", kwargs={"download-dir": "/mnt/lustre/work/luxburg/sbordt10/.cache/vllm"})
+llm = LLM(model="allenai/OLMo-1B-hf", download_dir = "/mnt/lustre/work/luxburg/sbordt10/.cache/vllm")
 
 
 
