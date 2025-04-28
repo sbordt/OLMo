@@ -13,11 +13,10 @@ sampling_params = SamplingParams(
     prompt_logprobs=0         # prefix tokens
 )
 
-
 # load hellaswag queries
 import pickle
-#with open("hellaswag_queries.pkl", "rb") as f:
-#    prompts = pickle.load(f)
+with open("hellaswag_queries.pkl", "rb") as f:
+    prompts = pickle.load(f)
 
 import os
 download_dir = None
@@ -41,3 +40,15 @@ if not os.path.exists("../results"):
 # save the outputs
 with open("../results/hellaswag_outputs.pkl", "wb") as f:
     pickle.dump(outputs, f)
+
+
+
+
+
+
+
+
+
+
+
+
