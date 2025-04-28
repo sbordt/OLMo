@@ -9,7 +9,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=64    
 #SBATCH --mem=500G   
-#SBATCH --gres=gpu:4              
+#SBATCH --gres=gpu:2              
 
 scontrol show job ${SLURM_JOB_ID}
 nvidia-smi
@@ -19,4 +19,4 @@ export WANDB__SERVICE_WAIT=6000
 cd /weka/luxburg/sbordt10/OLMo
 source activate olmo-3.11
 
-torchrun --nproc_per_node=4 --master_port=29501 scripts/train.py single-training-run/scripts/OLMo-1B.yaml 
+torchrun --nproc_per_node=2 --master_port=29501 scripts/train.py single-training-run/scripts/OLMo-1B.yaml 
