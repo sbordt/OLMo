@@ -37,7 +37,7 @@ model:
 
 softmax_auxiliary_loss: true
 auxiliary_loss_multiplier: 1e-5
-fused_loss: true
+fused_loss: false       # raise NameError("`fused_loss_fn` is not defined. Please ensure that `flash_attn` is installed.")
 
 compile: null
 
