@@ -66,7 +66,7 @@ tokenizer:
   truncate_direction: right
 
 save_folder: /mnt/lustre/work/luxburg/sbordt10/Single-Training-Run-OLMo-1B-Mod
-save_overwrite: false
+save_overwrite: true  # for debugging only!
 
 save_interval: 1000
 save_interval_ephemeral: 250
