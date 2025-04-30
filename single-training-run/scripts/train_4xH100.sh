@@ -7,7 +7,7 @@
 #SBATCH --partition=h100-ferranti
 #SBATCH --nodes=1  
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=64    
+#SBATCH --cpus-per-task=32    
 #SBATCH --mem=500G   
 #SBATCH --gres=gpu:2              
 
@@ -17,6 +17,6 @@ export NCCL_TIMEOUT=1800000
 export WANDB__SERVICE_WAIT=6000
 
 cd /weka/luxburg/sbordt10/OLMo
-source activate olmo-3.11
+source activate olmo-2
 
-torchrun --nproc_per_node=2 --master_port=29501 scripts/train.py single-training-run/scripts/OLMo-1B.yaml 
+torchrun --nproc_per_node=2 --master_port=29501 scripts/train.py single-training-run/scripts/OLMo2-1B-Mod.yaml 

@@ -14,6 +14,7 @@ scontrol show job ${SLURM_JOB_ID}
 nvidia-smi
 export NCCL_TIMEOUT=1800000
 export WANDB__SERVICE_WAIT=6000
+export OLMO_SHARED_FS=1
 
 cd /mnt/lustre/work/luxburg/sbordt10/OLMo
 source activate olmo-2
