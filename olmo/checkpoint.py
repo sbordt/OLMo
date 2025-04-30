@@ -1928,13 +1928,13 @@ class OlmoCoreCheckpointer(Checkpointer):
                 (checkpoint_dir / "train").mkdir(exist_ok=True, parents=True)
 
             wait_for(
-                lambda: (checkpoint_dir / "model").exists(), "Waiting for checkpoint model directory", timeout=10.0
+                lambda: (checkpoint_dir / "model").exists(), "Waiting for checkpoint model directory", timeout=1000.0
             )
             wait_for(
-                lambda: (checkpoint_dir / "optim").exists(), "Waiting for checkpoint optim directory", timeout=10.0
+                lambda: (checkpoint_dir / "optim").exists(), "Waiting for checkpoint optim directory", timeout=1000.0
             )
             wait_for(
-                lambda: (checkpoint_dir / "train").exists(), "Waiting for checkpoint train directory", timeout=10.0
+                lambda: (checkpoint_dir / "train").exists(), "Waiting for checkpoint train directory", timeout=1000.0
             )
 
             local_files_created = save_model_and_optim_state(checkpoint_dir, dist_model, optim, save_overwrite=self.cfg.save_overwrite)
