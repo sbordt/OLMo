@@ -3,7 +3,7 @@
 #SBATCH --output=/mnt/lustre/work/luxburg/sbordt10/logs/single-training-run/%x_%A_%a.out  
 #SBATCH --error=/mnt/lustre/work/luxburg/sbordt10/logs/single-training-run/%x_%A_%a.err   
 #SBATCH --open-mode=append
-#SBATCH --job-name=litsweep  
+#SBATCH --job-name=olmo-mod  
 #SBATCH --partition=a100-galvani 
 #SBATCH --nodes=1  
 #SBATCH --ntasks=1       

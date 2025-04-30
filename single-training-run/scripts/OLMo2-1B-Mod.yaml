@@ -2,6 +2,11 @@ run_name: OLMo2-1B-Mod
 seed: 6198
 dry_run: false
 
+wandb:
+  project: "OLMo2-1B-Mod"
+  entity: "sbordt-University of Tübingen"
+  name: ${run_name}
+
 model:
   d_model: 2048
   n_heads: 16
