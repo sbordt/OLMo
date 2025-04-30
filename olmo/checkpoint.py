@@ -572,7 +572,7 @@ class Checkpointer(metaclass=ABCMeta):
         # creating the temp directory from rank 0 might not be immediately
         # realized in the file systems of the other ranks.
         # So we wait here across all ranks until that tmp checkpoint directory is visible.
-        wait_for(lambda: checkpoint_dir_tmp.exists(), "Waiting for checkpoint directory", timeout=1000.0)
+        wait_for(lambda: checkpoint_dir_tmp.exists(), "Waiting for checkpoint directory", timeout=100.0)
 
         barrier()
 
@@ -598,7 +598,7 @@ class Checkpointer(metaclass=ABCMeta):
         # replacing the temp directory with the final directory from rank 0 might not be immediately
         # realized in the file systems of the other ranks.
         # So we wait here across all ranks until that final checkpoint directory is visible.
-        wait_for(lambda: checkpoint_dir.exists(), "Waiting for checkpoint directory", timeout=1000.0)
+        wait_for(lambda: checkpoint_dir.exists(), "Waiting for checkpoint directory", timeout=100.0)
 
         barrier()
 
@@ -1923,18 +1923,19 @@ class OlmoCoreCheckpointer(Checkpointer):
         with self._temporary_wd(dir) as checkpoint_dir:
             log.info("Saving model and optim state...")
             if get_fs_local_rank() == 0:
+                log.info("Creating checkpoint directories...")
                 (checkpoint_dir / "model").mkdir(exist_ok=True, parents=True)
                 (checkpoint_dir / "optim").mkdir(exist_ok=True, parents=True)
                 (checkpoint_dir / "train").mkdir(exist_ok=True, parents=True)
 
             wait_for(
-                lambda: (checkpoint_dir / "model").exists(), "Waiting for checkpoint model directory", timeout=1000.0
+                lambda: (checkpoint_dir / "model").exists(), "Waiting for checkpoint model directory", timeout=100.0
             )
             wait_for(
-                lambda: (checkpoint_dir / "optim").exists(), "Waiting for checkpoint optim directory", timeout=1000.0
+                lambda: (checkpoint_dir / "optim").exists(), "Waiting for checkpoint optim directory", timeout=100.0
             )
             wait_for(
-                lambda: (checkpoint_dir / "train").exists(), "Waiting for checkpoint train directory", timeout=1000.0
+                lambda: (checkpoint_dir / "train").exists(), "Waiting for checkpoint train directory", timeout=100.0
             )
 
             local_files_created = save_model_and_optim_state(checkpoint_dir, dist_model, optim, save_overwrite=self.cfg.save_overwrite)
