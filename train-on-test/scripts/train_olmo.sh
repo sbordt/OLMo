@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --time=00:30:00  # Runtime in D-HH:MM:SS    
-#SBATCH --output=/mnt/qb/work/luxburg/sbordt10/logs/olmo/%j.out  
-#SBATCH --error=/mnt/qb/work/luxburg/sbordt10/logs/olmo/%j.err   
+#SBATCH --output=/mnt/lustre/work/luxburg/sbordt10/logs/olmo/%j.out  
+#SBATCH --error=/mnt/lustre/work/luxburg/sbordt10/logs/olmo/%j.err   
 #SBATCH --open-mode=append
 #SBATCH --job-name=olmo  
 #SBATCH --partition=a100-galvani 
