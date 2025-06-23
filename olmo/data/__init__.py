@@ -142,9 +142,25 @@ def build_train_dataloader(
             )
         dataset = build_custom_dataset(train_config)
     else:
-        dataset = build_memmap_dataset(
-            train_config, train_config.data, include_instance_metadata=include_instance_metadata
-        )
+        # EXPERIMENT INTEGRATION BEGIN
+        import os 
+        file_path = os.getenv('OLMO_EXPERIMENT_INSERTIONS_FILE', None)
+        if file_path and Path(file_path).exists():
+            # unpickle the file
+            import pickle
+            with open(file_path, 'rb') as f:
+                insert_dict = pickle.load(f)
+            from .patched_memmap_dataset import build_patched_memmap_dataset
+            dataset = build_patched_memmap_dataset(
+                train_config, train_config.data, insert_dict, include_instance_metadata=include_instance_metadata
+            )
+            LOGGER.info(f"Using patched memmap dataset with insertions from {file_path}")
+        else:
+            # ORIGINAL CODE
+            dataset = build_memmap_dataset(
+                train_config, train_config.data, include_instance_metadata=include_instance_metadata
+            )
+        # EXPERIMENT INTEGRATION END
     work_dir = Path(train_config.save_folder) / "train_data"
     if get_global_rank() == 0:
         if work_dir.is_dir() and not train_config.save_overwrite:
