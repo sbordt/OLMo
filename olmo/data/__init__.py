@@ -142,9 +142,31 @@ def build_train_dataloader(
             )
         dataset = build_custom_dataset(train_config)
     else:
-        dataset = build_memmap_dataset(
-            train_config, train_config.data, include_instance_metadata=include_instance_metadata
-        )
+        ### PRETRAIN-EXPERIMENTS ###
+        import os 
+        insert_dict = {}
+        insert_dict_file_path = os.getenv('OLMO_EXPERIMENT_INSERTIONS_FILE', None)
+        if insert_dict_file_path and Path(insert_dict_file_path).exists():
+            LOGGER.info(f"Using insertions from {insert_dict_file_path}.")
+            import pickle
+            with open(insert_dict_file_path, 'rb') as f:
+                insert_dict = pickle.load(f)
+        hdf5_insert_storage_file = os.getenv('OLMO_EXPERIMENT_HDF5_INSERTIONS_FILE', None)
+        if hdf5_insert_storage_file is not None:
+            LOGGER.info(f"Using insertions from {hdf5_insert_storage_file}.")
+        # if the dict is not empty or the storage file is provided, use the patched memmap dataset
+        if insert_dict or hdf5_insert_storage_file is not None:
+            from .patched_memmap_dataset import build_patched_memmap_dataset
+            dataset = build_patched_memmap_dataset(
+                train_config, train_config.data, insert_dict, hdf5_insert_storage_file, include_instance_metadata=include_instance_metadata
+            )
+            LOGGER.info(f"Using patched memmap dataset.")
+        else:
+            LOGGER.info(f"No training data insertions provided, using regular MemMapDataset.")
+            dataset = build_memmap_dataset(
+                train_config, train_config.data, include_instance_metadata=include_instance_metadata        # default to the original code
+            )
+        ### PRETRAIN-EXPERIMENTS ###
     work_dir = Path(train_config.save_folder) / "train_data"
     if get_global_rank() == 0:
         if work_dir.is_dir() and not train_config.save_overwrite:
